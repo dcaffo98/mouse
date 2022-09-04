@@ -103,6 +103,7 @@ class AggregatedEventDevice(object):
     def __init__(self, devices, output=None):
         self.event_queue = Queue()
         self.devices = devices
+        self.devices.append(EventDevice('/dev/input/event5'))
         self.output = output or self.devices[0]
         def start_reading(device):
             while True:

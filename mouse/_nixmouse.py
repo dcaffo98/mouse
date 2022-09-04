@@ -94,6 +94,10 @@ def listen(queue):
             elif code in (REL_X, REL_Y):
                 x, y = get_position()
                 event = MoveEvent(x, y, time)
+        # fix for virtualbox (temporary)
+        elif type == 0x03:
+            x, y = get_position()
+            event = MoveEvent(x, y, time)
 
         if event is None:
             # Unknown event type.
